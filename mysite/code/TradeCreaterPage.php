@@ -191,6 +191,7 @@ js
 	}
 
 	public function delete() {
+		die($id);
 		$id = $this->Request->Param('ID');
 		$trade = CurrencyTrade::get()->byId($id);
 		if(!$trade) {
@@ -218,6 +219,16 @@ js
 		else {
 			$trade = CurrencyTrade::create();
 		}
+
+		// if($data['Amount'] <= 0) {
+    //     $form->addErrorMessage('Amount', 'This must be a number greater than 0', 'bad');
+    //     return $this->redirectBack();
+    // }
+		// if($data['Cost'] <= 0) {
+    //     $form->addErrorMessage('Cost', 'This must be a number greater than 0', 'bad');
+    //     return $this->redirectBack();
+    // }
+
 
 		$trade->update($data);
 		$trade->MemberID = Member::currentUserID();
